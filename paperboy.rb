@@ -4,22 +4,21 @@ class Paperboy
 
   def initialize
     @name = name
-    @quota = []
+    @quota = 50
     @earnings = []
   end
 
+  def delivery(start_address, end_address)
+
+  end
+
   def qouta
-    puts "Enter qouta for the day: "
-    qouta = 50 + (gets.chomp.to_i)
-    @qouta = qouta 
     puts "#{@name}'s quota is: #{@qouta}"
   end
 
-  def earnings
-  end
-
   def report
-    puts "I'm Tommy, I've delivered #{@qouta} "
+    puts "I'm #{@name}, I've delivered:#{@qouta} papers"
+    puts "Based on this paper route, I've earned:"
   end
 end
 
@@ -30,4 +29,5 @@ tommy.name = "Tommy"
 #Calling qouta on tommy
 tommy.qouta
 
-#Calling tommy on earnings method
+#Calling tommy reports method to report qouta and earnings
+tommy.report
