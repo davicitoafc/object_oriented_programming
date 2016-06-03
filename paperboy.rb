@@ -1,39 +1,55 @@
+#Created Paperboy class and added accessors for attributes
 class Paperboy
-  attr_accessor :name
-  attr_reader :earnings
 
-  def initialize
+  attr_reader :earnings, :quota, :experience #accesses variables 
+
+  def initialize(name, side)
     @name = name
+    @experience = 0
     @quota = 50
-    @earnings = []
+    @earnings = 0
+    @side = side
+  end
+
+  def quota
+    return @quota
   end
 
 #delivery method that calculates pay based on range of house numbers
-  def delivery(start_address, end_address)
-    per_paper = 0.25
-  end
+    def delivery(start_address, end_address)
+    even_total = 0
+    odd_total = 0
+    house_total = ((end_address - start_address) / 2).floor
 
-#qouta method retrieves number, adds it to qouta array, and puts out qouta for the day
-  def qouta
-    puts "Enter qouta for the day: "
-    qouta = 50 + (gets.chomp.to_i)
-    @qouta = qouta
-    puts "#{@name}'s quota is: #{@qouta}"
-  end
+      @experience = house_total
 
-#report method puts earnings based on qouta 
+      if house_total <= @quota
+        @earnings = @experience * (0.25)
+        @earnings -= 2 if house_total < @quota
+      elsif house_total > @quota
+        @earnings = (@experience * 0.25) + ((@experience - @quota) * 0.25)
+      end
+
+      # end
+    end
+
+#report method puts earnings based on quota
   def report
-    puts "I'm #{@name}, I've delivered: #{@qouta} papers"
-    puts "Based on this paper route, I've earned:"
+    puts "I'm #{@name}, I've delivered: #{@experience} papers"
+    puts "Based on this paper route, I've earned: #{@earnings} "
   end
+
 end
 
 #Created an instance variable of the Class Paperboy
-tommy = Paperboy.new
-tommy.name = "Tommy"
+david = Paperboy.new("David", "even")
 
-#Calling qouta on tommy
-tommy.qouta
+david.quota # => 50
+david.delivery(100, 220) # => 17.5
+david.earnings #=> 17.5
+david.report # => "I'm David, I've delivered 60 papers and I've earned $17.50 so far!"
 
-#Calling tommy reports method to report qouta and earnings
-tommy.report
+david.quota # => 80
+david.delivery(1, 150) # => 16.75
+david.earnings #=> 34.25
+david.report # => "I'm David, I've been delivered 135 papers and I've earned $34.25 so far!"
