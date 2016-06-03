@@ -1,26 +1,21 @@
 class Paperboy
-  attr_reader :name
-  attr_accessor 
+  attr_accessor :name
+  attr_reader :earnings
 
   def initialize
-    @Name =
-    @Quota =
-    @Experience =
-    @Side =
-    @Earnings =
+    @name = name
+    @quota = 50
+    @earnings = []
   end
 
   def qouta
-
+    puts "#{@name}'s quota is: #{@qouta}"
   end
-
-  def deliver(start_address, end_address)
-
-  end
-
-  def report
-
-  end
-
-
 end
+
+#Created an instance variable of the Class Paperboy
+tommy = Paperboy.new
+tommy.name = "Tommy"
+
+#Calling qouta on tommy
+tommy.qouta
