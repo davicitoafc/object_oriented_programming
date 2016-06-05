@@ -29,6 +29,7 @@ class Control
 end
 
 
+
 #Creates instance of Class Control
 mission_control = Control.new
 
@@ -46,6 +47,6 @@ puts "======================="
 mission_control.add_rover('9,4,S')
 mission_control.move_input("RM")
 
-puts mission_control.rovers[1].x
-puts mission_control.rovers[1].y
-puts mission_control.rovers[1].direction
+puts mission_control.rovers[0].x
+puts mission_control.rovers[0].y
+puts mission_control.rovers[0].direction
